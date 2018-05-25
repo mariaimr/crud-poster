@@ -1,5 +1,5 @@
 <body>
-<main>
+<main role="main">
 <div id="login" >
 
 		<h2><i class="material-icons">https</i>Iniciar Sesión</h2>

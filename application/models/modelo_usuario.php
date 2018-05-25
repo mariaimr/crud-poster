@@ -4,16 +4,14 @@ class modelo_usuario extends CI_Model{
 
     function __construct(){
         parent::__construct();
-        require_once ("F:\wamp64\www\Post_ejercicio\application\libraries\PasswordHash.php"); //llamado al archivo que encripta contraseña
     }
 
 public function validar(){
 
-    $t_hasher = new PasswordHash(8, FALSE); 
+  
     //obtiene el email y la contraseña ingresados al formulario
     $usuario_email=$_POST['usuario_email'];
 	$contrasena=$_POST['contrasena'];
-
     $contador = 0;
     //consulta a base de datos si el correo existe
     	$this -> db -> select('correo');
@@ -29,10 +27,9 @@ public function validar(){
         $this -> db -> from('usuario');
         $this -> db -> where('correo', $usuario_email);
         $info_Contrasena = $this -> db -> get();
-        $valid_Contrasena = $info_Contrasena-> row('contrasenia');
-        $hash = $t_hasher->HashPassword($valid_Contrasena);
-        $valido = $t_hasher -> CheckPassword($contrasena,$hash);
-
+        $hashContrasena = $info_Contrasena-> row('contrasenia');
+        $valido = password_verify($contrasena,$hashContrasena);
+		
         if($valido){
     		$contador = $contador + 1; // indica que existe el usuario y la contraseña es correcta
 			return $contador;
@@ -122,9 +119,11 @@ public function validar(){
 
     public function registrar_usuario(){
         //agrega un nuevo post a la base de datos
+		$contrasena = $this -> input -> post('contrasena');
+		$contrasenaCifrada = password_hash($contrasena, PASSWORD_DEFAULT);
         $data = array(
             'correo'=> $this -> input -> post('correo'),
-            'contrasenia' => $this -> input -> post('contrasena'),
+            'contrasenia' => $contrasenaCifrada,
             'nombre' => $this -> input -> post('nombre'),
             'edad' => $this->input -> post('edad'),
             'rol_fk' => $this->input -> post('rol')

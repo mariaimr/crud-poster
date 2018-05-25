@@ -159,7 +159,7 @@ class Welcome extends CI_Controller {
 	public function cerrar_sesion(){
     	session_destroy();
     	echo '<script>alert("Gracias por visitarnos!")</script> ';
-     	redirect('/index.php/Welcome/', 'refresh');
+     	redirect('', 'refresh');
     }
 
     public function mostrar_registro_usuario(){

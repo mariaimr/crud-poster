@@ -7,18 +7,18 @@
    </ul>
       <?php if ($rol=='creador') {?>
        <ul id="nav-mobile" class="right">
-        <li><a href="/post_ejercicio/index.php/Welcome/cargar_ver_escritor">Inicio</a></li>
-        <li><a href="/post_ejercicio/index.php/Welcome/cerrar_sesion">Salir</a></li>
+         <li><a href="<?php echo base_url("index.php/Welcome/cargar_ver_escritor")?>">Inicio</a></li>
+         <li><a href="<?php echo base_url("index.php/Welcome/cerrar_sesion")?>">Salir</a></li>
       </ul>
      <?php }else{?>
      <ul id="nav-mobile" class="right">
-        <li><a href="/post_ejercicio/index.php/Welcome/cargar_ver">Inicio</a></li>
-        <li><a href="/post_ejercicio/index.php/Welcome/cerrar_sesion">Salir</a></li>
+        <li><a href="<?php echo base_url("index.php/Welcome/cargar_ver")?>">Inicio</a></li>
+         <li><a href="<?php echo base_url("index.php/Welcome/cerrar_sesion")?>">Salir</a></li>
       </ul>
        <?php } ?>
     </div>
   </nav>
-
+<main class="main">
 <center> <h1 class="titulo" style="font-size: 30px; padding-top: 40px; color: #fff">Posts</h1></center>
 <br><br>
 <div class="row">
@@ -45,5 +45,6 @@
     </table>
 </div>
 </div>
+</main>
 </body>
  

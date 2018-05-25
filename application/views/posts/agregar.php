@@ -7,8 +7,8 @@
    </ul>
       
       <ul id="nav-mobile" class="right">
-        <li><a href="/post_ejercicio/index.php/Welcome/cargar_ver_escritor">Inicio</a></li>
-        <li><a href="/post_ejercicio/index.php/Welcome/cerrar_sesion">Salir</a></li>
+        <li><a href="<?php echo base_url('index.php/Welcome/cargar_ver_escritor')?> ">Inicio</a></li>
+        <li><a href="<?php echo base_url("index.php/Welcome/cerrar_sesion")?>">Salir</a></li>
       </ul>
     </div>
   </nav>
